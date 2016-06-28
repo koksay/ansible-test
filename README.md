@@ -13,7 +13,7 @@ $ git clone https://github.com/koksay/ansible-test.git ansible-test-project
 
 $ cd ansible-test-project
 
-$ vagrant up
+$ vagrant up --provider=virtualbox
 
 $ ansible-playbook deploy_flask.yml
 ```
