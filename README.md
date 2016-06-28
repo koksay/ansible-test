@@ -11,6 +11,8 @@ You may get the repository from github and deploy vagrant:
 ```
 $ git clone https://github.com/koksay/ansible-test.git ansible-test-project
 
+$ cd ansible-test-project
+
 $ vagrant up
 
 $ ansible-playbook deploy_flask.yml
