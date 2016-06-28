@@ -14,7 +14,6 @@
     conf_path: /etc/nginx/conf
     tls_enabled: True
     python: "{{ venv_path }}/bin/python"
-    gunicorn_proc_name: app
     domains:
       - 192.168.1.10.xip.io
   tasks:
@@ -41,7 +40,7 @@
     - name: set the supervisor config file
       template: src=templates/supervisor.conf.j2 dest=/etc/supervisor/conf.d/flask.conf
       sudo: True
-      notify: restart supervisor
+      notify: restart supervisord
     - name: set the nginx config file
       template: src=templates/nginx.conf.j2 dest=/etc/nginx/sites-available/flask.conf
       notify: restart nginx
@@ -72,8 +71,8 @@
       notify: restart nginx
 
   handlers:
-    - name: restart supervisor
-      supervisorctl: name=hello_world:app state=restarted
+    - name: restart supervisord
+      service: name=supervisor state=restarted
       sudo: True
     - name: restart nginx
       service: name=nginx state=restarted
