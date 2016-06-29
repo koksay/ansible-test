@@ -72,3 +72,12 @@ Now you can reach the flask application from below address:
 
 http://192.168.1.10.xip.io
 
+
+You may find the flask codes below:
+
+```
+$ vagrant ssh
+
+$ cd ~/flask_app/project
+```
+
