@@ -69,6 +69,8 @@
       sudo: True
       when: tls_enabled
       notify: restart nginx
+    - name: activate python virtual env when logged in
+      lineinfile: dest={{ ansible_env.HOME }}/.bashrc insertafter=EOF line='\nsource {{ venv_path }}/bin/activate'
 
   handlers:
     - name: restart supervisord
